@@ -13,6 +13,7 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+inquirer
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
@@ -23,6 +24,15 @@ const render = require("./lib/htmlRenderer");
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
+
+
+  
+  // Create manager, engineer, and interns
+  const manager = new Employee("Richie", Engineer);
+  const engineer = new Employee("Tim", Intern);
+  const intern = new Employee("Rachael", Manager);
+  
+  richie.printStats();
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
