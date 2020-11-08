@@ -1,16 +1,25 @@
 // TODO: Write code to define and export the Employee class
 class Employee {
-    constructor (name, jobTitle) {
+    constructor (name, id, email) {
       this.name = name;
-      this.jobTitle = jobTitle;
+      this.id = id;
+      this.email = email;
     }
-    // // method which prints all of the stats for a Employee
-    // printStats() {
-    //   console.log(`Stats for NAME are as following:`);
-    //   console.log(`Each attack will do STRENGTH damage.`);
-    //   console.log(`NAME has HITPOINTS hit points remaining!`);
-    //   console.log("------------");
-    // }
+    getName() {
+      return this.name;
+    };
+
+    getId() {
+      return this.id;
+    };
+
+    getEmail() {
+      return this.email;
+    };
+
+    getRole() {
+      return `Employee`;
+    }
   }
 
   module.exports = Employee;
