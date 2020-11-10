@@ -10,7 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const employees = [];
+let employees = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -48,7 +48,20 @@ inquirer.prompt([
           name: "officeNumber",
           message: "What is your office number?"
         },
-      ]).then(employees.push(employee));
+      ]).then(function(employee) {
+        var manager = new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
+        employees.push(manager);
+        var htmlText = render(employees);
+
+        var filename = employee.name.toLowerCase().split(' ').join('') + ".json";
+        fs.writeFile(filename, htmlText, function(err) {
+          render(employees);
+          if (err) {
+            return console.log(err);
+          }
+          console.log("Created Employee Object!");
+        });
+      });
     } else if (employee.employeeType === "Engineer") {
       inquirer.prompt([
         {
@@ -71,7 +84,15 @@ inquirer.prompt([
           name: "gitHub",
           message: "What is your GitHub username?"
         },
-      ]).then(employees.push(employee));
+      ]).then(function(data) {
+        var filename = data.name.toLowerCase().split(' ').join('') + ".json";
+        fs.writeFile(filename, JSON.stringify(data, null, '\t'), function(err) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log("Created Employee Object!");
+        });
+      });
     } else {
       inquirer.prompt([
         {
@@ -94,7 +115,15 @@ inquirer.prompt([
           name: "school",
           message: "Where are you currently enrolled?"
         },
-      ]).then(employees.push(employee));
+      ]).then(function(data) {
+        var filename = data.name.toLowerCase().split(' ').join('') + ".json";
+        fs.writeFile(filename, JSON.stringify(data, null, '\t'), function(err) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log("Created Employee Object!");
+        });
+      });
     }
 
   });
@@ -104,7 +133,7 @@ inquirer.prompt([
   // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
-render(employees);
+// render(employees);
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
@@ -114,10 +143,7 @@ render(employees);
 
 
   
-  // Create manager, engineer, and interns
-  // const richie = new Engineer("richie", 1, "richie@email.com", "richiegithub");
-  // const engineer = new Employee("Tim", Intern);
-  // const intern = new Employee("Rachael", Manager);
+// Create manager, engineer, and interns
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
