@@ -71,7 +71,7 @@ function askQuestions() {
             } else {
               var htmlText = render(employees);
               var filename = "team.html";
-              fs.writeFile(filename, htmlText, function(err) {
+              fs.writeFile(outputPath, htmlText, function(err) {
                 if (err) {
                   return console.log(err);
                 }
@@ -118,8 +118,7 @@ function askQuestions() {
               askQuestions();
             } else {
               var htmlText = render(employees);
-              var filename = "team.html";
-              fs.writeFile(filename, htmlText, function(err) {
+              fs.writeFile(outputPath, htmlText, function(err) {
                 if (err) {
                   return console.log(err);
                 }
@@ -167,7 +166,7 @@ function askQuestions() {
             } else {
               var htmlText = render(employees);
               var filename = "team.html";
-              fs.writeFile(filename, htmlText, function(err) {
+              fs.writeFile(outputPath, htmlText, function(err) {
                 if (err) {
                   return console.log(err);
                 }
@@ -178,118 +177,11 @@ function askQuestions() {
         });
       }
     }
-  
-    //   if (employee.employeeType === "Manager") {
-        
-  
-    //     })
-    //     inquirer.prompt([
-    //       {
-            // type: "list",
-            // message: "Would you like to add another employee?",
-            // name: "nextEmp",
-            // choices: [
-            //   "Yes",
-            //   "No",
-    //         ],
-    //       }
-        // ]).then(function(want) {
-        //   console.log('want:', want)
-        //   if (want.nextEmp === "Yes") {
-        //     askQuestions();
-    //       } else {
-            // var htmlText = render(employees);
-            // var filename = "team.html";
-            // fs.writeFile(filename, htmlText, function(err) {
-            //   if (err) {
-            //     return console.log(err);
-            //   }
-            //   console.log("Created Employee HTML!");
-            // });
-          // }
-    //     }
-    //     )
-    //   } else if (employee.employeeType === "Engineer") {
-    //     inquirer.prompt([
-          
-    //     ]).then(function(employee) {
-    //       var manager = new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
-    //       employees.push(manager);
-  
-    //     }).then(inquirer.prompt([
-    //       {
-    //         type: "list",
-    //         message: "Would you like to add another employee?",
-    //         name: "nextEmp",
-    //         choices: [
-    //           "Yes",
-    //           "No",
-    //         ],
-    //       }
-    //     ])).then(function(want) {
-    //       if (want.nextEmp === "Yes") {
-    //         askQuestions();
-    //       } else {
-    //         var htmlText = render(employees);
-    //         var filename = "team.html";
-    //         fs.writeFile(filename, htmlText, function(err) {
-    //           if (err) {
-    //             return console.log(err);
-    //           }
-    //           console.log("Created Employee HTML!");
-    //         });
-    //       }
-    //     }
-    //     )
-    //   } else {
-    //     inquirer.prompt([
-          
-    //     ]).then(function(employee) {
-    //       var manager = new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
-    //       employees.push(manager);
-  
-    //     }).then(inquirer.prompt([
-    //       {
-    //         type: "list",
-    //         message: "Would you like to add another employee?",
-    //         name: "nextEmp",
-    //         choices: [
-    //           "Yes",
-    //           "No",
-    //         ],
-    //       }
-    //     ])).then(function(want) {
-    //       if (want.nextEmp === "Yes") {
-    //         askQuestions();
-    //       } else {
-    //         var htmlText = render(employees);
-    //         var filename = "team.html";
-    //         fs.writeFile(filename, htmlText, function(err) {
-    //           if (err) {
-    //             return console.log(err);
-    //           }
-    //           console.log("Created Employee HTML!");
-    //         });
-    //       }
-    //     }
-    //     )
-    //   }
-    // }
 
-
-  // var htmlText = render(employees);
-  // var filename = "team.html";
-  // fs.writeFile(filename, htmlText, function(err) {
-  //   if (err) {
-  //     return console.log(err);
-  //   }
-  //   console.log("Created Employee Object!");
-  // });
   
-  // After the user has input all employees desired, call the `render` function (required
+// After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
-// render(employees);
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
