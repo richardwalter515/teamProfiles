@@ -57,7 +57,29 @@ function askQuestions() {
         ]).then(function(employee) {
           var manager = new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
           employees.push(manager);
-        })
+        }).then(function(){
+          inquirer.prompt({
+            type: "list",
+            message: "Would you like to add another employee?",
+            name: "nextEmp",
+            choices: [
+              "Yes",
+              "No",]
+          }).then(function(want) {
+            if (want.nextEmp === "Yes") {
+              askQuestions();
+            } else {
+              var htmlText = render(employees);
+              var filename = "team.html";
+              fs.writeFile(filename, htmlText, function(err) {
+                if (err) {
+                  return console.log(err);
+                }
+                console.log("Created Employee HTML!");
+              });
+            }
+          })
+        });
       } else if (role === "Engineer") {
         inquirer.prompt([
           {
@@ -83,8 +105,29 @@ function askQuestions() {
         ]).then(function(employee) {
           var engineer = new Engineer(employee.name, employee.id, employee.email, employee.gitHub);
           employees.push(engineer);
-          console.log('employees:', employees)
-        })
+        }).then(function(){
+          inquirer.prompt({
+            type: "list",
+            message: "Would you like to add another employee?",
+            name: "nextEmp",
+            choices: [
+              "Yes",
+              "No",]
+          }).then(function(want) {
+            if (want.nextEmp === "Yes") {
+              askQuestions();
+            } else {
+              var htmlText = render(employees);
+              var filename = "team.html";
+              fs.writeFile(filename, htmlText, function(err) {
+                if (err) {
+                  return console.log(err);
+                }
+                console.log("Created Employee HTML!");
+              });
+            }
+          })
+        });
       } else {
         inquirer.prompt([
           {
@@ -110,15 +153,29 @@ function askQuestions() {
         ]).then(function(employee) {
           var intern = new Intern(employee.name, employee.id, employee.email, employee.school);
           employees.push(intern);
-          var htmlText = render(employees);
-          var filename = "team.html";
-          fs.writeFile(filename, htmlText, function(err) {
-            if (err) {
-              return console.log(err);
+        }).then(function(){
+          inquirer.prompt({
+            type: "list",
+            message: "Would you like to add another employee?",
+            name: "nextEmp",
+            choices: [
+              "Yes",
+              "No",]
+          }).then(function(want) {
+            if (want.nextEmp === "Yes") {
+              askQuestions();
+            } else {
+              var htmlText = render(employees);
+              var filename = "team.html";
+              fs.writeFile(filename, htmlText, function(err) {
+                if (err) {
+                  return console.log(err);
+                }
+                console.log("Created Employee HTML!");
+              });
             }
-            console.log("Created Employee HTML!");
-          });
-        })
+          })
+        });
       }
     }
   
@@ -128,18 +185,18 @@ function askQuestions() {
     //     })
     //     inquirer.prompt([
     //       {
-    //         type: "list",
-    //         message: "Would you like to add another employee?",
-    //         name: "nextEmp",
-    //         choices: [
-    //           "Yes",
-    //           "No",
+            // type: "list",
+            // message: "Would you like to add another employee?",
+            // name: "nextEmp",
+            // choices: [
+            //   "Yes",
+            //   "No",
     //         ],
     //       }
-    //     ]).then(function(want) {
-    //       console.log('want:', want)
-    //       if (want.nextEmp === "Yes") {
-    //         askQuestions();
+        // ]).then(function(want) {
+        //   console.log('want:', want)
+        //   if (want.nextEmp === "Yes") {
+        //     askQuestions();
     //       } else {
             // var htmlText = render(employees);
             // var filename = "team.html";
